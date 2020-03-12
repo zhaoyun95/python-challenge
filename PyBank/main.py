@@ -1,11 +1,18 @@
+# python-challenge
+# PyBank
+
 import csv
 import os
 
+# data file
 data_input = os.path.join(".\Resources", "budget_data.csv")
+
+# 3 lists to hold data
 dates = []
 profits = []
 changes = [] # for increase and decease in profits
 
+# loop through the data file one row at a time
 with open(data_input) as f:
     reader = csv.reader(f)
     header = True
@@ -22,6 +29,7 @@ with open(data_input) as f:
 # print(profits)
 # print(changes)
 
+# get statistics
 averageChange = sum(changes)/len(changes)
 maxIncrease = max(changes)
 maxDecrease = min(changes)
