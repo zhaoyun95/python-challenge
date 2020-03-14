@@ -15,15 +15,13 @@ changes = [] # for increase and decease in profits
 # loop through the data file one row at a time
 with open(data_input) as f:
     reader = csv.reader(f)
-    header = True
+    header = next(reader)
     for row in reader:
-        if header: # skip header line
-            header = False
-        else:
-            dates.append(row[0])
-            profits.append(int(row[1]))
-            if len(dates)>1:  # 1st one has no change, so skip it.
-                changes.append(profits[-1] - profits[-2])
+        dates.append(row[0])
+        profits.append(int(row[1]))
+        if len(dates)>1:  # 1st one has no change, so skip it.
+            changes.append(profits[-1] - profits[-2])
+
 # debug prints
 # print(dates)
 # print(profits)
