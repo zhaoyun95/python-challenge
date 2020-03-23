@@ -14,13 +14,11 @@ candidate_dict = {}
 # loop through data file one row at a time
 with open(data_input) as f:
     reader = csv.reader(f)
-    header = True
+    next(reader) # skip heading row
     for row in reader:
         candidate = row[2]
 
-        if header: # skip heading row
-            header = False
-        elif candidate in candidate_dict:
+        if candidate in candidate_dict:
             candidate_dict[candidate] += 1  # add one to total if candidate already exists
         else:
             candidate_dict[candidate] = 1  # set count to 1 if this is candidate's first vote
